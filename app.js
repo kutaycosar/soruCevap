@@ -5,8 +5,10 @@ const flash = require('connect-flash')
 const app = express()
 let mongodb = require('mongodb')
 const user = require('./controllers/userController')
+let dbSoruCevap = require('./db').db().collection("sorucevap")
 let db = require('./db').db().collection("comments")
 let data 
+let cevapData
 
 let sessionOptions = session({
   secret: "JavaScript is sooooooooo coool",
@@ -69,14 +71,14 @@ app.post('/create-item',function(req,res){
   
 })
 
-app.post('/create-cevap',function(req,res){
+// app.post('/create-cevap',function(req,res){
   
 
-  db.insertOne(cevap, function(err, info){
-      res.json(info.ops[0])
-  })
+//   db.insertOne(cevap, function(err, info){
+//       res.json(info.ops[0])
+//   })
   
-})
+// })
 
 app.post('/delete-item', function(req, res) {
   db.deleteOne({_id: new mongodb.ObjectId(req.body.id)}, function() {
@@ -86,6 +88,20 @@ app.post('/delete-item', function(req, res) {
 
 app.post('/soru-cevapla', function(req, res) {
   console.log("burdayiz")
+  if (dbSoruCevap.find(req.session.user.username)) {
+    cevapData = 
+    {
+    isim: req.session.user.username,
+    cevap: req.body.cevap,
+    }
+
+    dbSoruCevap.insertOne(cevapData, function(err, info){
+      res.json(info.ops[0])
+      
+    })
+    
+  }
+  
   
 })
 

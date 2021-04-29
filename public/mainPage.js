@@ -1,5 +1,7 @@
 
 let createField2 = document.getElementById("create-field2")
+let cevap
+
 
 let errors = []
 
@@ -97,16 +99,56 @@ document.getElementById("create-form").addEventListener("submit", function(e){
 })
 
 
+//sorucevap 
 
 document.getElementById("cevap").addEventListener("click", function(e){
-  if (e.target.classList.contains("aCevap")) {if (confirm("anan")) {
-    axios.post('/soru-cevapla', {id: e.target.getAttribute("data-id")}).then(function () {
-      // e.target.parentElement.parentElement.remove()
-    }).catch(function() {
-      console.log("Please try again later.")
-    })
+    if (e.target.classList.contains("aCevap")) {if (confirm("anan")) {
+      axios.post('/soru-cevapla', {cevap: "a"}).then(function () {
+        // e.target.parentElement.parentElement.remove()
+      }).catch(function() {
+        console.log("Please try again later.")
+      })
+    }
+
+    
+    }
+
+    if (e.target.classList.contains("bCevap")) {if (confirm("anan")) {
+      axios.post('/soru-cevapla', {cevap: "b"}).then(function () {
+        // e.target.parentElement.parentElement.remove()
+      }).catch(function() {
+        console.log("Please try again later.")
+      })
+    }
+
+    
+    }
+
+    if (e.target.classList.contains("cCevap")) {if (confirm("anan")) {
+      axios.post('/soru-cevapla', {cevap: "c"}).then(function () {
+        // e.target.parentElement.parentElement.remove()
+      }).catch(function() {
+        console.log("Please try again later.")
+      })
+    }
+
+    
+    }
+
+    if (e.target.classList.contains("dCevap")) {if (confirm("anan")) {
+      axios.post('/soru-cevapla', {cevap: "d"}).then(function () {
+        // e.target.parentElement.parentElement.remove()
+      }).catch(function() {
+        console.log("Please try again later.")
+      })
+    }
+
+    
+    }
   }
-  }
-})
+
+  
+
+)
 
     
