@@ -84,6 +84,11 @@ app.post('/delete-item', function(req, res) {
   })
 })
 
+app.post('/soru-cevapla', function(req, res) {
+  console.log("burdayiz")
+  
+})
+
 app.use('/', router)
 
 module.exports = app
