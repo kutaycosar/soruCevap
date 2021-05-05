@@ -1,14 +1,28 @@
 
+
 let createField2 = document.getElementById("create-field2")
 let cevap
-
 
 let errors = []
 
 let validation = function(){
   if (createField2.value.length < 10) {errors.push("Yorumunuz 10 karakterden uzun olmalıdır.")}
 }
-///
+
+
+
+//deneme fucntion
+
+// changeStream();
+
+function passValues(){
+  firstName = document.getElementById("txt").value;
+  local.setItem("textvalue", firstName);
+  console.log(local.getItem("textvalue"))
+  return false;
+}
+
+//alert animation
 
 function alertTimeoutSuccess(mymsg,mymsecs)
 {
@@ -98,48 +112,55 @@ document.getElementById("create-form").addEventListener("submit", function(e){
   
 })
 
+document.getElementById("gonder").addEventListener("click",function(e){
+  //changeStream code
+  axios.post('/stream').then(function(){
+    
+  })
+
+})
 
 //sorucevap 
-
+//home-dashboard.ejs deki modal , sik sectiginde db de sorucevap collectiona kaydediyor bu pop up u tum kullanicilarda cikarmak istiyorum . app. js de 97.satir da post atiyor burdaki 127.satirdan sonra
 document.getElementById("cevap").addEventListener("click", function(e){
-    if (e.target.classList.contains("aCevap")) {if (confirm("anan")) {
+    if (e.target.classList.contains("aCevap")) {if (confirm("ss")) {
       axios.post('/soru-cevapla', {cevap: "a"}).then(function () {
-        // e.target.parentElement.parentElement.remove()
+      
       }).catch(function() {
-        console.log("Please try again later.")
+        console.log("sonra tekrar deneyin.")
       })
     }
 
     
     }
 
-    if (e.target.classList.contains("bCevap")) {if (confirm("anan")) {
+    else if (e.target.classList.contains("bCevap")) {if (confirm("ss")) {
       axios.post('/soru-cevapla', {cevap: "b"}).then(function () {
-        // e.target.parentElement.parentElement.remove()
+        
       }).catch(function() {
-        console.log("Please try again later.")
+        console.log("sonra tekrar deneyin.")
       })
     }
 
     
     }
 
-    if (e.target.classList.contains("cCevap")) {if (confirm("anan")) {
+    else if (e.target.classList.contains("cCevap")) {if (confirm("ss")) {
       axios.post('/soru-cevapla', {cevap: "c"}).then(function () {
-        // e.target.parentElement.parentElement.remove()
+       
       }).catch(function() {
-        console.log("Please try again later.")
+        console.log("sonra tekrar deneyin.")
       })
     }
 
     
     }
 
-    if (e.target.classList.contains("dCevap")) {if (confirm("anan")) {
+    else if (e.target.classList.contains("dCevap")) {if (confirm("ss")) {
       axios.post('/soru-cevapla', {cevap: "d"}).then(function () {
-        // e.target.parentElement.parentElement.remove()
+   
       }).catch(function() {
-        console.log("Please try again later.")
+        console.log("sonra tekrar deneyin.")
       })
     }
 
@@ -151,4 +172,5 @@ document.getElementById("cevap").addEventListener("click", function(e){
 
 )
 
-    
+
+

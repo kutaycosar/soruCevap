@@ -7,6 +7,12 @@ let mongodb = require('mongodb')
 const user = require('./controllers/userController')
 let dbSoruCevap = require('./db').db().collection("sorucevap")
 let db = require('./db').db().collection("comments")
+const { MongoClient } = require("mongodb");
+const uri =
+  "mongodb://todoAppUser:0024882aaa@cluster0-shard-00-00.m1hmo.mongodb.net:27017,cluster0-shard-00-01.m1hmo.mongodb.net:27017,cluster0-shard-00-02.m1hmo.mongodb.net:27017/Complex-App?ssl=true&replicaSet=atlas-tj1li7-shard-0&authSource=admin&retryWrites=true&w=majority";
+const client = new MongoClient(uri);
+
+
 let data 
 let cevapData
 
@@ -29,6 +35,8 @@ app.use(express.json())
 app.use(express.static('public'))
 app.set('views', 'views')
 app.set('view engine', 'ejs')
+
+
 
 function passwordProtected(req, res, next){
   res.set('WWW-Authenticate', 'Basic realm="Setream app", charset="UTF-8')
@@ -88,7 +96,7 @@ app.post('/delete-item', function(req, res) {
 
 app.post('/soru-cevapla', function(req, res) {
   console.log("burdayiz")
-  if (dbSoruCevap.find(req.session.user.username)) {
+  if (!dbSoruCevap.find(req.session.user.username)) {
     cevapData = 
     {
     isim: req.session.user.username,
@@ -104,6 +112,15 @@ app.post('/soru-cevapla', function(req, res) {
   
   
 })
+
+app.post('/stream', function(req, res) {
+  console.log("burssdayiz")
+  
+  
+  
+})
+
+
 
 app.use('/', router)
 
